@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="clear">Clear</string>
+    <string name="all_clear">All Clear</string>
+    <string name="delete">Delete last character</string>
+    <string name="history">Calculation history</string>
+    <string name="no_history">No recent calculations yet</string>
+    <string name="divide_by_zero_error">Cannot divide by zero</string>
+    <string name="invalid_format_error">Invalid expression format</string>
+</resources>
