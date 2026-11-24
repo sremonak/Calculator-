@@ -17,6 +17,7 @@ private val DarkColorScheme = darkColorScheme(
     error = ErrorRed
 )
 
+@Suppress("UNUSED_PARAMETER")
 @Composable
 fun HumanCalculatorTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
