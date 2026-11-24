@@ -13,28 +13,28 @@ class CalculatorEngineTest {
     fun testAdditionPrecision() {
         val result = CalculatorEngine.calculate("0.1", "0.2", CalculatorOperation.Add)
         assertTrue(result.isSuccess)
-        assertEquals(BigDecimal("0.3"), result.getOrNull())
+        assertEquals("0.3", result.getOrNull()?.toPlainString())
     }
 
     @Test
     fun testSubtraction() {
         val result = CalculatorEngine.calculate("10", "4.5", CalculatorOperation.Subtract)
         assertTrue(result.isSuccess)
-        assertEquals(BigDecimal("5.5"), result.getOrNull())
+        assertEquals("5.5", result.getOrNull()?.toPlainString())
     }
 
     @Test
     fun testMultiplication() {
         val result = CalculatorEngine.calculate("2.5", "4", CalculatorOperation.Multiply)
         assertTrue(result.isSuccess)
-        assertEquals(BigDecimal("10"), result.getOrNull())
+        assertEquals("10", result.getOrNull()?.toPlainString())
     }
 
     @Test
     fun testDivision() {
         val result = CalculatorEngine.calculate("10", "4", CalculatorOperation.Divide)
         assertTrue(result.isSuccess)
-        assertEquals(BigDecimal("2.5"), result.getOrNull())
+        assertEquals("2.5", result.getOrNull()?.toPlainString())
     }
 
     @Test
@@ -48,6 +48,13 @@ class CalculatorEngineTest {
     fun testPercentage() {
         val result = CalculatorEngine.applyPercentage("250")
         assertTrue(result.isSuccess)
-        assertEquals(BigDecimal("2.5"), result.getOrNull())
+        assertEquals("2.5", result.getOrNull()?.toPlainString())
+    }
+
+    @Test
+    fun testZeroCalculation() {
+        val result = CalculatorEngine.calculate("5", "5", CalculatorOperation.Subtract)
+        assertTrue(result.isSuccess)
+        assertEquals("0", result.getOrNull()?.toPlainString())
     }
 }

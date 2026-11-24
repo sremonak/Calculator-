@@ -32,7 +32,12 @@ object CalculatorEngine {
                     num1.divide(num2, 10, RoundingMode.HALF_UP)
                 }
             }
-            Result.success(result.stripTrailingZeros())
+            val stripped = if (result.compareTo(BigDecimal.ZERO) == 0) {
+                BigDecimal.ZERO
+            } else {
+                result.stripTrailingZeros()
+            }
+            Result.success(stripped)
         } catch (e: Exception) {
             Result.failure(e)
         }
@@ -41,8 +46,13 @@ object CalculatorEngine {
     fun applyPercentage(numberStr: String): Result<BigDecimal> {
         val num = numberStr.toBigDecimalOrNull() ?: return Result.failure(IllegalArgumentException("Invalid number"))
         return try {
-            val result = num.divide(BigDecimal("100"), 10, RoundingMode.HALF_UP).stripTrailingZeros()
-            Result.success(result)
+            val result = num.divide(BigDecimal("100"), 10, RoundingMode.HALF_UP)
+            val stripped = if (result.compareTo(BigDecimal.ZERO) == 0) {
+                BigDecimal.ZERO
+            } else {
+                result.stripTrailingZeros()
+            }
+            Result.success(stripped)
         } catch (e: Exception) {
             Result.failure(e)
         }
